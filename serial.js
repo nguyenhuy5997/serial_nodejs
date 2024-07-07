@@ -1,6 +1,7 @@
 // Import dependencies
 const SerialPort = require("serialport");
 const Readline = require("@serialport/parser-readline");
+const nmea_element = require("nmea-simple");
 
 var fs = require('fs');
 var util = require('util');
@@ -18,7 +19,12 @@ console.log = function(d) { //
 const port = new SerialPort("COM3", {
     baudRate: 115200,
 });
-
+// const port_1 = new SerialPort("COM3", {
+//   baudRate: 115200,
+// });
+// const port_2 = new SerialPort("COM3", {
+//   baudRate: 115200,
+// });
 // The Serial port parser
 const parser = new Readline();
 port.pipe(parser);
@@ -1219,12 +1225,12 @@ var nmea = [   "$GPGGA,030248.509,2101.272,N,10551.461,E,1,12,1.0,0.0,M,0.0,M,,*
 
 function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
-  }
+}
 async function main() {
     for(let i = 0; i < nmea.length; i++) {
         console.log("-------------------------------------------------" + i);
         port.write(nmea[i]+"\r\n");
-        await sleep(500);
+        await sleep(1000);
     }
 } 
 main();

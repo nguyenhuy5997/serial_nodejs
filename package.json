@@ -9,6 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "mqtt": "^5.8.0",
+    "nmea": "^0.1.2",
+    "nmea-simple": "^3.3.0",
     "serialport": "^8.0.7"
   }
 }
